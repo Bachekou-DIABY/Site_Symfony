@@ -1,0 +1,87 @@
+@import "custom";
+@import "~bootstrap/scss/bootstrap";
+
+html,body{
+  height: 100%;
+}
+
+body{
+  position: relative;
+  background-color: lightgray;
+  min-height: 100%;
+}
+
+.between{
+  justify-content: space-between;
+}
+/**Header style**/
+
+.nav-style{
+  padding-left: 10px;
+}
+
+.nav-brand-style{
+  font-weight:bold;
+}
+
+/**Main style**/
+
+main{
+  position:relative;
+}
+
+.main-title{
+  text-align: center;
+}
+
+.homepage-subtitle{
+  text-align: center;
+  padding-top:20px;
+}
+
+.hidden{
+  display: none;
+}
+  /**Card style*/
+
+.card{
+  height:25vh;
+  width:80vw;
+  margin-left: auto;
+  margin-right:auto;
+  margin-top:20px;
+  border-radius: 10px;
+  box-shadow:3px 5px 5px black ;
+}
+
+.card-title,.card-description{
+  justify-content: center;
+  text-align: center;
+}
+
+.paginator-style{
+  margin-top:10px;
+  justify-content: center;
+  justify-self: center;
+  justify-items: center;
+  position:relative;
+  bottom:0;
+
+}
+
+/**Footer style**/ 
+
+footer >h3 {
+  text-align: center;
+  color: white;
+  padding-top: 15px;
+}
+
+footer{
+  position: absolute; 
+  bottom: 0; 
+  left: 0;
+  right: 0;
+  height: 10vh;
+  background-color: #5b5e5a;
+}

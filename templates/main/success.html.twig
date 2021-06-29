@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Creer une annonce{% endblock %}
+
+
+{% block main %}
+<h1 class="main-title">L'annonce a bien été créée</h1>
+<a href="{{ path('homepage')}}">Retour a l'accueil</a>
+<a href="{{ path('manage_offer')}}">Gerer ses annonces</a>
+{% endblock %}

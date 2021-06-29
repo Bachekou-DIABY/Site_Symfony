@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block main %}
+  <h3 class="main-title">Bienvenue sur Click and Fit</h3>
+  <span> Retrouvez nos dernieres annonces</span>
+  {% for offer in pagination %}
+  <div class="card">
+      <img class="card-img-left" src="../../public/uploads/{{offer.image}}" alt="Card image cap">
+      <p class="card-title"> {{offer.title}}</p>
+      <p class="card-description"> {{offer.description}}</p>
+  </div>
+  {% endfor %}
+  <div class="paginator-style">{{ knp_pagination_render(pagination) }}</div>
+{% endblock %}

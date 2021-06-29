@@ -2,18 +2,47 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
-
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> {% block title %} Exercice Click and Fit {% endblock %} </title>
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_script_tags('app') }}
+        {%block head %}{% endblock %}
+        {% block stylesheets %}{% endblock %}
+        {% block javascripts %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+      <header>
+        <div>
+          <nav class="navbar navbar-expand-lg navbar-light bg-light nav-style">
+            <a class="navbar-brand nav-brand-style" href="/">Click and Fit</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="{{ path('homepage')}}">Accueil <span class="sr-only"></span></a>
+                {% if app.user %}
+                <a class ="nav-item nav-link " href="{{ path('create_offer')}}">Creer une annonce</a>
+                <a class ="nav-item nav-link " href="{{ path('manage_offer')}}">Gerer ses annonces</a>
+
+						    <a class ="nav-item nav-link " href="/logout">Deconnexion</a>
+					      {% else %}
+						    <a class ="nav-item nav-link " href="{{ path('app_login')}}">Connexion</a>
+			          {% endif %}
+                {% if not app.user %}
+                <a class="nav-item nav-link" href="{{ path('app_register')}}">Inscription</a>
+                {% endif %}
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>          
+      <main>
+      {% block main %}{% endblock %}
+      </main>
+      <footer>
+        <h3> Tous droits reservés </h3>
+      </footer>
     </body>
 </html>

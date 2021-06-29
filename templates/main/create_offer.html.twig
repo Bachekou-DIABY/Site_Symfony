@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Creer une annonce{% endblock %}
+
+
+{% block main %}
+<h1 class="main-title"> Creer une annonce </h1>
+{{ form_start(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.description) }}        
+    {{ form_row(form.phone_number) }}
+    {{ form_row(form.post_code) }}
+    {{ form_row(form.Image) }}
+    <div class="hidden">{{ form_row(form.Date) }}</div>
+    <div class="hidden">{{ form_row(form.user) }}</div>
+    <button type="submit" class="btn btn-primary">Créer l'offre</button>
+{{ form_end(form) }}
+{% endblock %}
