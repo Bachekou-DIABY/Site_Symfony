@@ -2,13 +2,14 @@
 @import "~bootstrap/scss/bootstrap";
 
 html,body{
-  height: 100%;
+  min-height: 100%;
 }
 
 body{
-  position: relative;
   background-color: lightgray;
-  min-height: 100%;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 .between{
@@ -24,14 +25,23 @@ body{
   font-weight:bold;
 }
 
+#search-form{
+  overflow: hidden;
+  max-width: 300px;
+}
+
+
 /**Main style**/
 
 main{
-  position:relative;
+  flex-grow:1;
 }
 
 .main-title{
-  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
 .homepage-subtitle{
@@ -42,32 +52,142 @@ main{
 .hidden{
   display: none;
 }
-  /**Card style*/
-
-.card{
-  height:25vh;
-  width:80vw;
-  margin-left: auto;
-  margin-right:auto;
-  margin-top:20px;
-  border-radius: 10px;
-  box-shadow:3px 5px 5px black ;
-}
-
-.card-title,.card-description{
-  justify-content: center;
-  text-align: center;
-}
 
 .paginator-style{
-  margin-top:10px;
-  justify-content: center;
-  justify-self: center;
-  justify-items: center;
-  position:relative;
-  bottom:0;
-
+  position: relative; 
+  margin-top:5vh;
 }
+
+
+  /**Card style*/
+  
+  .card {
+    height:40vh;
+    width:80vw;
+    margin-left: auto;
+    margin-right:auto;
+    margin-top:20px;
+    border-radius: 10px;
+    box-shadow:3px 5px 5px black ;
+    display: grid;
+    grid-template-columns: fit-content(50%) 1fr 1fr;
+    grid-template-rows: 0.5fr 1.5fr 1fr;
+    gap: 0px 5px;
+    grid-auto-flow: row;
+    grid-template-areas: 
+    "Image Title Title"
+    "Image Description Description"
+    "Image PostCode Phone"; 
+  }
+  .Image { 
+    grid-area: Image; 
+    display: block;
+    max-width: 100%;
+    height: 100%;
+    object-fit: fill;
+    object-position: left;
+  }
+  
+  .Description { grid-area: Description; 
+  }
+  
+  .Title { 
+    grid-area:Title; 
+    justify-self: center;
+    padding-top: 5px;
+  }
+  p > .Description{
+    font-size: 0.5rem;
+    word-break: break-all
+  }
+
+  .PostCode { grid-area:PostCode; 
+    align-self: end; 
+  }
+
+  .Phone { grid-area: 3 / 3 / 4 / 4; 
+    align-self: end; 
+  }
+
+@include media-breakpoint-down(md) { 
+  .card {
+    height:40vh;
+    width:80vw;
+    margin-left: auto;
+    margin-right:auto;
+    margin-top:20px;
+    border-radius: 10px;
+    box-shadow:3px 5px 5px black ;
+    display: grid;
+    grid-template-columns: fit-content(50%) 1fr 1fr;
+    grid-template-rows: 0.5fr 1.5fr 1fr;
+    gap: 0px 5px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Image Title Title"
+      "Image Phone Phone"
+      "Image PostCode PostCode";
+  }
+  
+  .Image { grid-area: Image;
+    display: block;
+    max-width: 100%;
+    height: 100%;
+    object-fit: fill;
+    object-position: center;
+  }
+  
+  .Title { grid-area: Title; }
+  
+  .Phone { 
+    grid-area: Phone;
+    align-self: center;
+  }
+  
+  .PostCode {
+    grid-area: PostCode;
+    align-self: center;
+  }
+ }
+
+.card-title,.card-text{
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+
+/**Form style*/
+
+.show-image {
+  display: block;
+  max-width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-control{
+  width:50vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+.form-label{
+  display:flex;
+  justify-content:center;
+}
+
+
+.btn-login,.btn-delete,.btn-registration,.btn-image{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 10px;
+}
+
 
 /**Footer style**/ 
 
@@ -78,7 +198,8 @@ footer >h3 {
 }
 
 footer{
-  position: absolute; 
+  margin-top: 5px;
+  position: relative; 
   bottom: 0; 
   left: 0;
   right: 0;

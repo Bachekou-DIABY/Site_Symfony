@@ -4,15 +4,14 @@
 
 
 {% block main %}
-<h1 class="main-title"> Creer une annonce </h1>
+<h3 class="main-title"> Creer une annonce </h3>
 {{ form_start(form) }}
-    {{ form_row(form.title) }}
-    {{ form_row(form.description) }}        
-    {{ form_row(form.phone_number) }}
-    {{ form_row(form.post_code) }}
-    {{ form_row(form.Image) }}
-    <div class="hidden">{{ form_row(form.Date) }}</div>
-    <div class="hidden">{{ form_row(form.user) }}</div>
-    <button type="submit" class="btn btn-primary">Créer l'offre</button>
+    {{ form_row(form.title, {label: 'Titre',label_attr:{'class': 'form-label'}}) }}
+    {{ form_row(form.description,{label:'Description',label_attr:{'class': 'form-label'}}) }}        
+    {{ form_row(form.phone_number,{label:'Numero de téléphone',label_attr:{'class': 'form-label'}}) }}
+    {{ form_row(form.post_code,{label:'Code Postal',label_attr:{'class': 'form-label'}}) }}
+    {{ form_row(form.price,{label:'Prix',label_attr:{'class': 'form-label'}}) }}
+    {{ form_row(form.Image,{label:'Image',label_attr:{'class': 'form-label'},attr:{'class': 'btn-image'}}) }}
+    <button type="submit" class="btn btn-login btn-primary delete">Créer l'offre</button>
 {{ form_end(form) }}
 {% endblock %}

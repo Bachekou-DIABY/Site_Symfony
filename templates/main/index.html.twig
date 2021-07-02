@@ -3,14 +3,17 @@
 {% block title %}Accueil{% endblock %}
 
 {% block main %}
-  <h3 class="main-title">Bienvenue sur Click and Fit</h3>
-  <span> Retrouvez nos dernieres annonces</span>
+  <h3 class="main-title mt-3">Bienvenue sur Click and Fit</h3>
+  <p class="p-3"> Retrouvez nos dernieres annonces</p>
   {% for offer in pagination %}
-  <div class="card">
-      <img class="card-img-left" src="../../public/uploads/{{offer.image}}" alt="Card image cap">
-      <p class="card-title"> {{offer.title}}</p>
-      <p class="card-description"> {{offer.description}}</p>
-  </div>
+  <a class="card text-decoration-none text-dark" href="{{ path('offer' , {id:offer.id}) }}">
+      <img class="Image" src="uploads/{{offer.image}}" alt="Card image cap">
+      <p class="Title"> {{offer.title}}</p>
+      <p class="Description d-none d-md-block"> Prix : {{offer.price}}€ <br>
+      Description : {{offer.description |truncate(255,true," ... (Lire la suite)")}}</p>
+      <p class="PostCode">Code postal : {{offer.PostCode}}</p>
+      <p class="Phone">Contact : {{offer.PhoneNumber}}</p>
+  </a>
   {% endfor %}
   <div class="paginator-style">{{ knp_pagination_render(pagination) }}</div>
 {% endblock %}

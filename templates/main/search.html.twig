@@ -1,21 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gerer ses annonces{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block main %}
-  <h3 class="main-title">Gerer ses annonces</h3>
+  <h3 class="main-title">Bienvenue sur Click and Fit</h3>
+  <span> Retrouvez nos dernieres annonces</span>
   {% for offer in offers %}
-  <div class="card">
+  <a class="card text-decoration-none text-dark" href="{{ path('offer' , {id:offer.id}) }}">
       <img class="Image" src="uploads/{{offer.image}}" alt="Card image cap">
       <p class="Title"> {{offer.title}}</p>
       <p class="Description d-none d-md-block"> Prix : {{offer.price}}€ <br>
       Description : {{offer.description}}</p>
       <p class="PostCode">Code postal : {{offer.PostCode}}</p>
       <p class="Phone">Contact : {{offer.PhoneNumber}}</p>
-    </div>
-      <form action="{{ path('delete_offer', { 'id': offer.id }) }}" method="delete">
-        <input type="hidden" name="_method" value="DELETE" />
-        <button class="btn btn-danger btn-delete" type="submit">Supprimer l'annonce</button>
-      </form>  
+  </a>
   {% endfor %}
 {% endblock %}

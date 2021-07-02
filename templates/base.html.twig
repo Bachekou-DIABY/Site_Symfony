@@ -7,6 +7,9 @@
         <title> {% block title %} Exercice Click and Fit {% endblock %} </title>
         {{ encore_entry_link_tags('app') }}
         {{ encore_entry_script_tags('app') }}
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
         {%block head %}{% endblock %}
         {% block stylesheets %}{% endblock %}
         {% block javascripts %}{% endblock %}
@@ -19,14 +22,14 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
               <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="{{ path('homepage')}}">Accueil <span class="sr-only"></span></a>
                 {% if app.user %}
-                <a class ="nav-item nav-link " href="{{ path('create_offer')}}">Creer une annonce</a>
-                <a class ="nav-item nav-link " href="{{ path('manage_offer')}}">Gerer ses annonces</a>
+                <a class ="nav-item nav-link " href="{{ path('create_offer')}}">Créer une annonce</a>
+                <a class ="nav-item nav-link " href="{{ path('manage_offer')}}">Gérer ses annonces</a>
 
-						    <a class ="nav-item nav-link " href="/logout">Deconnexion</a>
+						    <a class ="nav-item nav-link " href="/logout">Déconnexion</a>
 					      {% else %}
 						    <a class ="nav-item nav-link " href="{{ path('app_login')}}">Connexion</a>
 			          {% endif %}
@@ -34,6 +37,10 @@
                 <a class="nav-item nav-link" href="{{ path('app_register')}}">Inscription</a>
                 {% endif %}
               </div>
+                <form class="form-inline d-inline-flex" id="search-form" action="{{ path('search')}}" method="GET">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+                  <button class="btn btn-sm btn-outline-info mx-2" type="submit">Search</button>
+                </form>
             </div>
           </nav>
         </div>

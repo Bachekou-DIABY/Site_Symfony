@@ -53,6 +53,11 @@ class Offer
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Price;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -138,6 +143,18 @@ class Offer
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getPrice(): ?string
+    {
+        return $this->Price;
+    }
+
+    public function setPrice(?string $Price): self
+    {
+        $this->Price = $Price;
 
         return $this;
     }

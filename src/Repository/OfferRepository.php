@@ -19,21 +19,21 @@ class OfferRepository extends ServiceEntityRepository
         parent::__construct($registry, Offer::class);
     }
 
-    /*/**
+    /**
     * @return Offer[] Returns an array of Offer objects
     */
-    /*
-    public function findOffers($value)
+    
+    public function findByKeyword($keyword)
     {
         return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('o.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('o.title like :keyword')
+            ->setParameter('keyword', $keyword)
+            ->orderBy('o.Date', 'ASC')
+            /*->setMaxResults(10)*/
             ->getQuery()
             ->getResult()
         ;
-    }*/
+    }
 
     /*
     public function findOneBySomeField($value): ?Offer

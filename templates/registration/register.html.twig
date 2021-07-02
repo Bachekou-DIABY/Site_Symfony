@@ -7,18 +7,33 @@
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
+    <h3 class="main-title">Inscription</h3>
 
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.Username) }}
-        {{ form_row(registrationForm.last_name) }}
-        {{ form_row(registrationForm.first_name) }}        
-        {{ form_row(registrationForm.phone_number) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+        {{ form_row(registrationForm.Username, {
+            label: 'Nom d\'utilisateur',
+            label_attr:{'class': 'form-label'}
         }) }}
-
-        <button type="submit" class="btn btn-primary">Register</button>
+        {{ form_row(registrationForm.last_name, {
+            label: 'Nom',
+            label_attr:{'class': 'form-label'}
+        }) }}
+        {{ form_row(registrationForm.first_name, {
+            label: 'Prenom',
+            label_attr:{'class': 'form-label'}
+        }) }}     
+        {{ form_row(registrationForm.phone_number, {
+            label: 'Numéro de téléphone',
+            label_attr:{'class': 'form-label'}
+        }) }}
+        {{ form_row(registrationForm.email, {
+            label: 'Adresse email',
+            label_attr:{'class': 'form-label'}
+        }) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de passe',
+            label_attr:{'class': 'form-label'}
+        }) }}
+        <button type="submit" class="btn btn-registration btn-primary">Inscription</button>
     {{ form_end(registrationForm) }}
 {% endblock %}

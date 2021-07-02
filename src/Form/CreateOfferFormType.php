@@ -5,8 +5,13 @@ namespace App\Form;
 use App\Entity\User;
 use App\Entity\Offer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,15 +25,10 @@ class CreateOfferFormType extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('description', TextareaType::class)
-            ->add('phone_number')
-            ->add('post_code')
-            ->add('Date')
+            ->add('phone_number',NumberType::class)
+            ->add('post_code',NumberType::class)
+            ->add('price',MoneyType::class,['currency'=>False])
             ->add('Image', FileType::class)
-            ->add('user',EntityType::class,[
-            'class' => User::class,
-            'choice_label' => 'id',
-            ])
-
         ;
     }
 

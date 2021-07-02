@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offre{% endblock %}
+
+{% block main %}
+  <h3 class="main-title ">{{offer.title}}</h3>
+  <img class="show-image" src="/uploads/{{offer.image}}" alt="Card image cap">
+  <p>Description : {{offer.description}}</p>
+  <p>Prix : {{offer.price}}€</p>
+  <p>Code postal : {{offer.PostCode}}</p>
+  <p>Contact : {{offer.PhoneNumber}}</p>
+{% endblock %}
