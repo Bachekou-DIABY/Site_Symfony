@@ -5,14 +5,14 @@
 {% block main %}
   <h3 class="main-title">Gerer ses annonces</h3>
   {% for offer in offers %}
-  <div class="card">
+    <a class="card text-decoration-none text-dark" href="{{ path('manage_offer_show' , {id:offer.id}) }}">
       <img class="Image" src="uploads/{{offer.image}}" alt="Card image cap">
       <p class="Title"> {{offer.title}}</p>
       <p class="Description d-none d-md-block"> Prix : {{offer.price}}€ <br>
-      Description : {{offer.description}}</p>
+      Description : {{offer.description|truncate(180,true," ... (Lire la suite)")}}</p>
       <p class="PostCode">Code postal : {{offer.PostCode}}</p>
       <p class="Phone">Contact : {{offer.PhoneNumber}}</p>
-    </div>
+    </a>
       <form action="{{ path('delete_offer', { 'id': offer.id }) }}" method="delete">
         <input type="hidden" name="_method" value="DELETE" />
         <button class="btn btn-danger btn-delete" type="submit">Supprimer l'annonce</button>

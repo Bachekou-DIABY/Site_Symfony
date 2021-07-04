@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{offer.title}}{% endblock %}
+
+{% block main %}
+  <h3 class="main-title ">{{offer.title}}</h3>
+  <img class="show-image" src="/uploads/{{offer.image}}" alt="Card image cap">
+  <p>Description : {{offer.description}}</p>
+  <p>Prix : {{offer.price}}€</p>
+  <p>Code postal : {{offer.PostCode}}</p>
+  <p>Contact : {{offer.PhoneNumber}}</p>
+  <form action="{{ path('delete_offer', { 'id': offer.id }) }}" method="delete">
+    <input type="hidden" name="_method" value="DELETE" />
+    <button class="btn btn-danger btn-delete" type="submit">Supprimer l'annonce</button>
+  </form>  
+{% endblock %}

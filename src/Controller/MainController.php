@@ -32,7 +32,6 @@ class MainController extends AbstractController
 
       $offers = $repository->findBy([],['id'=>'DESC']);
       if (!$offers) {
-        throw $this->createNotFoundException(('No Offer'));
         return $this->render('main/index.html.twig', [
           'offers' => $offers,
           'controller_name' => 'MainController',
@@ -45,7 +44,7 @@ class MainController extends AbstractController
       $pagination = $paginator->paginate(
         $offers, // Requête contenant les données à paginer (ici nos articles)
         $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
-        2 // Nombre de résultats par page
+        10 // Nombre de résultats par page
       );
       $pagination->setCustomParameters([
         'align' => 'center', # center|right (for template: twitter_bootstrap_v4_pagination and foundation_v6_pagination)
@@ -84,6 +83,19 @@ class MainController extends AbstractController
   
           return new RedirectResponse($this->urlGenerator->generate('delete_success'));
         }
+
+      /**
+       * @Route("/manage_offer_show/{id}", name="manage_offer_show")
+       */
+      public function manageOfferShow($id): Response
+      {
+        $repository = $this->getDoctrine()->getRepository(Offer::class);
+        $offer = $repository->findBy(['id' => $id])[0];
+          return $this->render('main/manage_offer_show.html.twig', [
+              'offer' => $offer,
+              'controller_name' => 'MainController',
+          ]);
+      }
 
     /**
      * @Route("/create_offer", name="create_offer")

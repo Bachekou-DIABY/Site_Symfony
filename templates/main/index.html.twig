@@ -4,16 +4,28 @@
 
 {% block main %}
   <h3 class="main-title mt-3">Bienvenue sur Click and Fit</h3>
+  {% if app.user %}
+  <p class="p-3"> Connecté en tant que <b>{{app.user.lastname}} {{app.user.Firstname}}</b></p>
+  {% endif %}
   <p class="p-3"> Retrouvez nos dernieres annonces</p>
-  {% for offer in pagination %}
-  <a class="card text-decoration-none text-dark" href="{{ path('offer' , {id:offer.id}) }}">
-      <img class="Image" src="uploads/{{offer.image}}" alt="Card image cap">
-      <p class="Title"> {{offer.title}}</p>
-      <p class="Description d-none d-md-block"> Prix : {{offer.price}}€ <br>
-      Description : {{offer.description |truncate(255,true," ... (Lire la suite)")}}</p>
-      <p class="PostCode">Code postal : {{offer.PostCode}}</p>
-      <p class="Phone">Contact : {{offer.PhoneNumber}}</p>
-  </a>
-  {% endfor %}
-  <div class="paginator-style">{{ knp_pagination_render(pagination) }}</div>
+  {% if offers %}
+    {% for offer in pagination %}
+    <a class="card text-decoration-none text-dark" href="{{ path('offer' , {id:offer.id}) }}">
+        <img class="Image" src="uploads/{{offer.image}}" alt="Card image cap">
+        <p class="Title"> {{offer.title}}</p>
+        <p class="Description d-none d-md-block"> Prix : {{offer.price}}€ <br><br>
+        Description : {{offer.description |truncate(180,true," ... (Lire la suite)")}}</p>
+        <p class="PostCode">Code postal : {{offer.PostCode}}</p>
+        <p class="Phone">Contact : {{offer.PhoneNumber}}</p>
+    </a>
+    {% endfor %}
+    <div class="paginator-style">{{ knp_pagination_render(pagination) }}</div>
+  {% endif %}
+  {% if not offers %}
+  <div class="center p-3">
+    <p> Aucune offre n'est disponible, creez en une en allant dans 
+    <a class="text-dark text-decoration-none " href="{{ path ('create_offer')}}"> "Créer une offre"</a>
+  </p>
+  {% endif %}
+
 {% endblock %}

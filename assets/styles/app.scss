@@ -58,6 +58,10 @@ main{
   margin-top:5vh;
 }
 
+.center{
+  display: flex;  
+  justify-content: center;
+}
 
   /**Card style*/
   
@@ -70,7 +74,7 @@ main{
     border-radius: 10px;
     box-shadow:3px 5px 5px black ;
     display: grid;
-    grid-template-columns: fit-content(50%) 1fr 1fr;
+    grid-template-columns: 260px 1fr 1fr;
     grid-template-rows: 0.5fr 1.5fr 1fr;
     gap: 0px 5px;
     grid-auto-flow: row;
@@ -119,7 +123,7 @@ main{
     border-radius: 10px;
     box-shadow:3px 5px 5px black ;
     display: grid;
-    grid-template-columns: fit-content(50%) 1fr 1fr;
+    grid-template-columns: 130px 1fr 1fr;
     grid-template-rows: 0.5fr 1.5fr 1fr;
     gap: 0px 5px;
     grid-auto-flow: row;
